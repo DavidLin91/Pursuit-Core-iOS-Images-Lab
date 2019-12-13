@@ -10,21 +10,20 @@ import UIKit
 
 class PokemonDVC: UIViewController {
 
+    var pokemon: Cards!
+    @IBOutlet weak var pokemonCardImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var pokemonTypeLabel: UILabel!
+    @IBOutlet weak var pokemonWeaknessLabel: UILabel!
+    @IBOutlet weak var pokemonCell: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateUI() {
+        nameLabel.text = pokemon.name
     }
-    */
 
 }

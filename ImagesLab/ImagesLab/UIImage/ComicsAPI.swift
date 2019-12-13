@@ -9,9 +9,11 @@
 import Foundation
 
 struct ComicsAPI {
-    func getImage( for comicNum: Int, completion: @escaping (Result<Comics, AppError>) -> ()) {
+    
+    // get data/ captures it bur not in use
+   static func getImage(with comicNum: Int, completion: @escaping (Result<Comics, AppError>) -> ()) {
         
-        let comicURL = "http://xkcd.com/\(comicNum)/info.0.json"
+        let comicURL = "https://xkcd.com/\(comicNum)/info.0.json"
         
         NetworkHelper.shared.performDataTask(with: comicURL ) { (result) in
             switch result {
@@ -29,3 +31,5 @@ struct ComicsAPI {
         }
     }
 }
+
+

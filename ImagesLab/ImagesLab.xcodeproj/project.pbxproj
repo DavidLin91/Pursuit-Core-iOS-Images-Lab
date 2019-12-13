@@ -103,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				63F011D923A02EF80057A854 /* PokemonCardsVC.swift */,
-				63F011E523A039A60057A854 /* PokemonCell.swift */,
 				63F011E123A030740057A854 /* PokemonDVC.swift */,
+				63F011E523A039A60057A854 /* PokemonCell.swift */,
 				6359404A23A04012001ED108 /* Pokemon.swift */,
 				6359404623A03FEA001ED108 /* PokemonAPI.swift */,
 			);

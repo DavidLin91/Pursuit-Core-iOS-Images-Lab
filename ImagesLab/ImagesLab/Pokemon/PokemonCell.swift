@@ -8,17 +8,26 @@
 
 import UIKit
 
+// uploads image
 class PokemonCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var pokemonCardImage: UIImageView!
+    
+    var pokemon: Cards!
+    
+    func configureCell(data: Cards) {
+        NetworkHelper.shared.performDataTask(with: data.imageUrl) { (result) in
+            switch result {
+            case .failure(let appError):
+                print("\(appError)")
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let pokemonImage = UIImage(data: data)
+                    self.pokemonCardImage.image = pokemonImage
+                }
+            }
+        }
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
