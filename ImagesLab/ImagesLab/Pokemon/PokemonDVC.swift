@@ -23,7 +23,23 @@ class PokemonDVC: UIViewController {
     }
     
     func updateUI() {
-        nameLabel.text = pokemon.name
+        nameLabel.text = "Name: \(pokemon.name ?? "none" )"
+        pokemonWeaknessLabel.text = "Weakness: \(pokemon.weakness?.type ?? "none")"
+        pokemonCell.text = "Set: \(pokemon.set ?? "unknown")"
+        for types in pokemon.types ?? ["none"] {
+            pokemonTypeLabel.text = "Type(s): \(types.description)"
+        }
+        NetworkHelper.shared.performDataTask(with: pokemon.imageUrl) { (result) in
+            switch result {
+            case .failure(let appError):
+                print("\(appError)")
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let pokemonImage = UIImage(data: data)
+                    self.pokemonCardImage.image = pokemonImage
+                }
+            }
+        }
     }
 
 }
